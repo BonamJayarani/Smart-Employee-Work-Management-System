@@ -1,0 +1,109 @@
+{% extends 'employee_management_system/base.html' %}
+
+{% block content %}
+<style>
+  body {
+    background-color: #f1f5f9; /* soft grey-blue background */
+    margin: 0;
+    padding: 0;
+  }
+
+  .form-wrapper {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 15px;
+    background-color: #f1f5f9;
+  }
+
+  .form-container {
+    width: 100%;
+    max-width: 600px;
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    animation: slideFadeIn 0.6s ease-out forwards;
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  @keyframes slideFadeIn {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  h2 {
+    text-align: center;
+    margin-bottom: 25px;
+    color: #1e293b;
+    font-weight: 600;
+  }
+
+  table {
+    width: 100%;
+  }
+
+  table td {
+    padding: 10px;
+    vertical-align: top;
+  }
+
+  input, select, textarea {
+    width: 100%;
+    padding: 8px;
+    border-radius: 6px;
+    border: 1px solid #cbd5e1;
+  }
+
+  button[type="submit"] {
+    width: 100%;
+    padding: 12px;
+    background-color: #1d4ed8;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-weight: 500;
+    margin-top: 15px;
+    transition: background-color 0.3s, transform 0.3s;
+  }
+
+  button[type="submit"]:hover {
+    background-color: #2563eb;
+    transform: scale(1.03);
+  }
+
+  a.back-link {
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+    color: #1d4ed8;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s;
+  }
+
+  a.back-link:hover {
+    color: #0ea5e9;
+  }
+</style>
+
+<div class="form-wrapper">
+  <div class="form-container">
+    <h2>Create Employee</h2>
+
+    <form method="post">
+      {% csrf_token %}
+      <table>
+        {{ form.as_table }}
+      </table>
+      <button type="submit">Submit</button>
+    </form>
+
+    <a href="{% url 'employee_list' %}" class="back-link">← Back to Employee List</a>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,107 @@
+{% extends 'employee_management_system/base.html' %}
+
+{% block content %}
+<div class="form-wrapper mt-4">
+    <h2 class="mb-4 fade-in">{% if form.instance.pk %}Edit Salary{% else %}Add Salary{% endif %}</h2>
+
+    <form method="post" class="animated-form">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label class="form-label">Employee</label>
+            {{ form.employee }}
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Basic Salary</label>
+            {{ form.basic_salary }}
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Bonus</label>
+            {{ form.bonus }}
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Deductions</label>
+            {{ form.deductions }}
+        </div>
+        <button type="submit" class="btn btn-success btn-glow">Save</button>
+        <a href="{% url 'salary_list' %}" class="btn btn-secondary btn-fade">Cancel</a>
+    </form>
+</div>
+
+<style>
+  body {
+    background: linear-gradient(to right, #2c3e50, #bdc3c7); /* Navy blue to soft grey */
+    min-height: 100vh;
+    margin: 0;
+    padding-top: 40px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+
+  .form-wrapper {
+    background: #ffffff;
+    padding: 30px 40px;
+    border-radius: 15px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+    animation: slideFadeIn 0.6s ease;
+    max-width: 650px;
+    margin: 0 auto;
+  }
+
+  .fade-in {
+    opacity: 0;
+    animation: fadeIn 1s ease forwards;
+  }
+
+  .animated-form .mb-3 {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeUp 0.5s forwards;
+  }
+
+  .animated-form .mb-3:nth-child(1) { animation-delay: 0.2s; }
+  .animated-form .mb-3:nth-child(2) { animation-delay: 0.4s; }
+  .animated-form .mb-3:nth-child(3) { animation-delay: 0.6s; }
+  .animated-form .mb-3:nth-child(4) { animation-delay: 0.8s; }
+
+  .btn-glow {
+    transition: box-shadow 0.3s ease, transform 0.2s;
+  }
+
+  .btn-glow:hover {
+    box-shadow: 0 0 12px rgba(40, 167, 69, 0.6);
+    transform: translateY(-2px);
+  }
+
+  .btn-fade {
+    transition: background-color 0.3s ease, transform 0.2s;
+  }
+
+  .btn-fade:hover {
+    background-color: #5a6268;
+    transform: translateY(-2px);
+  }
+
+  @keyframes slideFadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fadeUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fadeIn {
+    to {
+      opacity: 1;
+    }
+  }
+</style>
+{% endblock %}

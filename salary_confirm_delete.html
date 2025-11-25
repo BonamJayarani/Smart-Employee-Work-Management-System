@@ -1,0 +1,86 @@
+{% extends 'employee_management_system/base.html' %}
+
+{% block content %}
+<style>
+  body {
+    background-color: #f6f4f2;
+  }
+
+  .delete-wrapper {
+    background-color: #fff;
+    padding: 30px 40px;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    animation: slideFadeIn 0.5s ease;
+    max-width: 600px;
+    margin: 60px auto;
+  }
+
+  @keyframes slideFadeIn {
+    from {
+      transform: translateY(40px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  .delete-wrapper h2 {
+    color: #0d3b66;
+    font-weight: 600;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  .delete-wrapper p {
+    font-size: 16px;
+    color: #333;
+    text-align: center;
+  }
+
+  .btn-danger {
+    background-color: #8b0000;
+    border-color: #8b0000;
+    transition: all 0.3s ease;
+  }
+
+  .btn-danger:hover {
+    background-color: #a60000;
+    transform: scale(1.05);
+  }
+
+  .btn-secondary {
+    background-color: #8b5e3c;
+    border-color: #8b5e3c;
+    transition: all 0.3s ease;
+    margin-left: 10px;
+  }
+
+  .btn-secondary:hover {
+    background-color: #a96e47;
+    transform: scale(1.05);
+  }
+
+  .form-btns {
+    text-align: center;
+    margin-top: 25px;
+  }
+</style>
+
+<div class="delete-wrapper">
+  <h2>Delete Salary Record</h2>
+  <p>Are you sure you want to delete the salary record for
+    <strong>{{ salary.employee.first_name }} {{ salary.employee.last_name }}</strong>?
+  </p>
+
+  <form method="post">
+    {% csrf_token %}
+    <div class="form-btns">
+      <button type="submit" class="btn btn-danger">Delete</button>
+      <a href="{% url 'salary_list' %}" class="btn btn-secondary">Cancel</a>
+    </div>
+  </form>
+</div>
+{% endblock %}

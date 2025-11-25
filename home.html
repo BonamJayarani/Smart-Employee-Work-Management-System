@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Employee Management System</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(120deg, #dfe9f3, #ffffff);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      animation: fadeBg 5s ease-in-out infinite alternate;
+    }
+
+    @keyframes fadeBg {
+      0% { background-color: #f3f6fb; }
+      100% { background-color: #e1eaf5; }
+    }
+
+    header {
+      background-color: #1e3a8a;
+      color: white;
+      padding: 24px 40px;
+      font-size: 24px;
+      font-weight: 700;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    }
+
+    .hero {
+      padding: 60px 20px;
+      text-align: center;
+      animation: slideFade 1.2s ease;
+    }
+
+    @keyframes slideFade {
+      0% {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .hero h1 {
+      font-size: 36px;
+      color: #1e2a38;
+      margin-bottom: 10px;
+    }
+
+    .hero p {
+      font-size: 18px;
+      color: #666;
+      margin-bottom: 30px;
+    }
+
+    .btn-primary {
+      background-color: #1e3a8a;
+      color: white;
+      padding: 12px 28px;
+      font-size: 16px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    .btn-primary:hover {
+      background-color: #2f4ab0;
+      transform: translateY(-2px);
+    }
+
+    .card-section {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+      padding: 40px 20px;
+      animation: fadeIn 1s ease-in;
+    }
+
+    .card {
+      background-color: #ffffff;
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+      width: 220px;
+      height: 160px;
+      text-align: center;
+      padding: 20px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .card h3 {
+      font-size: 20px;
+      color: #1e3a8a;
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      font-size: 14px;
+      color: #555;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      color: #999;
+    }
+
+    @media (max-width: 768px) {
+      .card-section {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .hero h1 {
+        font-size: 28px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    Employee Management System
+  </header>
+
+  <section class="hero">
+    <h1>Welcome to the Employee Management System</h1>
+    <p>Manage employees, departments, attendance, salary and more — all in one place.</p>
+    <form action="{% url 'login' %}" method="get">
+      <button class="btn-primary" type="submit">Login to Dashboard</button>
+    </form>
+  </section>
+
+  <section class="card-section">
+    <div class="card">
+      <h3>Employees</h3>
+      <p>View and manage employee details and profiles.</p>
+    </div>
+    <div class="card">
+      <h3>Departments</h3>
+      <p>Organize employees by department and roles.</p>
+    </div>
+    <div class="card">
+      <h3>Attendance</h3>
+      <p>Track daily attendance and work hours.</p>
+    </div>
+    <div class="card">
+      <h3>Leaves</h3>
+      <p>Manage leave requests, approvals and history.</p>
+    </div>
+    <div class="card">
+      <h3>Salary</h3>
+      <p>Payroll overview, salary slips and payment status.</p>
+    </div>
+  </section>
+
+  <footer>
+    &copy; 2025 Employee Management System. All rights reserved.
+  </footer>
+</body>
+</html>

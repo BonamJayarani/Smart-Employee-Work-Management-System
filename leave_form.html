@@ -1,0 +1,124 @@
+{% extends 'employee_management_system/base.html' %}
+
+{% block content %}
+<style>
+  body {
+    background-color: #f9f7f3;
+  }
+
+  .form-wrapper {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+    animation: slideFadeIn 0.6s ease;
+    margin-top: 40px;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  @keyframes slideFadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(40px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  h2 {
+    color: #0d3b66;
+    font-weight: 600;
+    margin-bottom: 25px;
+    text-align: center;
+  }
+
+  .form-group {
+    margin-bottom: 20px;
+  }
+
+  label {
+    font-weight: 500;
+    color: #0d3b66;
+    display: block;
+    margin-bottom: 6px;
+  }
+
+  select,
+  input,
+  textarea {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+  }
+
+  select:focus,
+  input:focus,
+  textarea:focus {
+    outline: none;
+    border-color: #8b5e3c;
+    box-shadow: 0 0 5px rgba(139, 94, 60, 0.4);
+  }
+
+  .btn-success {
+    background-color: #0d3b66;
+    border-color: #0d3b66;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+  }
+
+  .btn-success:hover {
+    background-color: #145399;
+    transform: scale(1.05);
+  }
+
+  .btn-secondary {
+    background-color: #8b5e3c;
+    border-color: #8b5e3c;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+  }
+
+  .btn-secondary:hover {
+    background-color: #a96e47;
+    transform: scale(1.05);
+  }
+</style>
+
+<div class="form-wrapper">
+  <h2>{% if form.instance.pk %}Edit Leave{% else %}Add Leave{% endif %}</h2>
+
+  <form method="post">
+    {% csrf_token %}
+    <div class="form-group">
+      <label for="id_employee">Employee</label>
+      {{ form.employee }}
+    </div>
+    <div class="form-group">
+      <label for="id_start_date">Start Date</label>
+      {{ form.start_date }}
+    </div>
+    <div class="form-group">
+      <label for="id_end_date">End Date</label>
+      {{ form.end_date }}
+    </div>
+    <div class="form-group">
+      <label for="id_leave_type">Leave Type</label>
+      {{ form.leave_type }}
+    </div>
+    <div class="form-group">
+      <label for="id_status">Status</label>
+      {{ form.status }}
+    </div>
+    <div class="form-group">
+      <label for="id_reason">Reason</label>
+      {{ form.reason }}
+    </div>
+    <button type="submit" class="btn btn-success">{% if form.instance.pk %}Update{% else %}Submit{% endif %}</button>
+    <a href="{% url 'leave_list' %}" class="btn btn-secondary">Cancel</a>
+  </form>
+</div>
+{% endblock %}

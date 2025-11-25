@@ -1,0 +1,85 @@
+{% extends 'employee_management_system/base.html' %}
+
+{% block content %}
+<style>
+  .employee-details-container {
+    animation: slideFadeIn 0.6s ease forwards;
+    transform: translateY(30px);
+    opacity: 0;
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  }
+
+  @keyframes slideFadeIn {
+    from {
+      transform: translateY(30px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  .employee-details-container h2 {
+    margin-bottom: 20px;
+    font-weight: 600;
+    color: #1e293b;
+  }
+
+  .table th {
+    width: 150px;
+    background-color: #f8fafc;
+    color: #1e293b;
+  }
+
+  .btn-primary {
+    margin-top: 20px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .btn-primary:hover {
+    transform: scale(1.02);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+</style>
+
+<div class="container mt-4">
+  <div class="employee-details-container">
+    <h2>Employee Details</h2>
+    <table class="table table-bordered">
+      <tr>
+        <th>Name:</th>
+        <td>{{ employee.first_name }} {{ employee.last_name }}</td>
+      </tr>
+      <tr>
+        <th>Email:</th>
+        <td>{{ employee.email }}</td>
+      </tr>
+      <tr>
+        <th>Phone:</th>
+        <td>{{ employee.phone }}</td>
+      </tr>
+      <tr>
+        <th>Department:</th>
+        <td>{{ employee.department.name }}</td>
+      </tr>
+      <tr>
+        <th>Position:</th>
+        <td>{{ employee.position }}</td>
+      </tr>
+      <tr>
+        <th>Salary:</th>
+        <td>{{ employee.salary }}</td>
+      </tr>
+      <tr>
+        <th>Joined On:</th>
+        <td>{{ employee.date_joined }}</td>
+      </tr>
+    </table>
+    <a href="{% url 'leave_list' %}" class="btn btn-primary">Back to List</a>
+  </div>
+</div>
+{% endblock %}

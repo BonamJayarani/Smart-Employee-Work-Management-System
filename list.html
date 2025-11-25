@@ -1,0 +1,32 @@
+{% extends "employee_management_system/base.html" %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>Settings List</h2>
+
+    <table class="table table-bordered mt-3">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Setting Name</th>
+                <th>Value</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>Admin Email</td>
+                <td>{{ request.session.admin_email|default:"Not Set" }}</td>
+                <td><a href="{% url 'settings' %}" class="btn btn-primary btn-sm">Edit</a></td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Theme</td>
+                <td>{{ request.session.theme|default:"Light" }}</td>
+                <td><a href="{% url 'settings' %}" class="btn btn-primary btn-sm">Edit</a></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+{% endblock %}
